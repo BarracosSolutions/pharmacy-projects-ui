@@ -8,19 +8,19 @@ class Header extends Component {
         <Navbar inverse collapseOnSelect>
             <Navbar.Header>
                 <Navbar.Brand>
-                <a href="#brand">Pharmacy Projects</a>
+                <a href="/">Pharmacy Projects</a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
                 <Nav>
-                <NavItem eventKey={1} href="#">
+                <NavItem eventKey={1} href="/">
                     Projects
                 </NavItem>
                 <NavDropdown eventKey={3} title="Admin Action" id="basic-nav-dropdown">
-                    <MenuItem eventKey={3.1}>Add Drug</MenuItem>
-                    <MenuItem eventKey={3.2}>Add Patient</MenuItem>
-                    <MenuItem eventKey={3.3}>Add Employee</MenuItem>
+                    <MenuItem eventKey={3.1} href="/drug">Add Drug</MenuItem>
+                    <MenuItem eventKey={3.2} href="/patient">Add Patient</MenuItem>
+                    <MenuItem eventKey={3.3} href="/employee">Add Employee</MenuItem>
                 </NavDropdown>
                 </Nav>
                 <Nav pullRight>

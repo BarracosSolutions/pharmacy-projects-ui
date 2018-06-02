@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Pacient extends Component {
+class Patient extends Component {
   render() {
     return (
       <div>
-        Pacient
+        Patient
       </div>
     );
   }
 }
 
-export default Pacient;
+export default Patient;
