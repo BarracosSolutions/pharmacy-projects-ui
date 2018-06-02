@@ -4,7 +4,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 class Header extends Component {
   render() {
     return (
-      <div className>
+      <div>
         <Navbar inverse collapseOnSelect>
             <Navbar.Header>
                 <Navbar.Brand>
