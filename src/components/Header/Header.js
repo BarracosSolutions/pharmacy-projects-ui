@@ -21,6 +21,7 @@ class Header extends Component {
                     <MenuItem eventKey={3.1} href="/drug">Add Drug</MenuItem>
                     <MenuItem eventKey={3.2} href="/patient">Add Patient</MenuItem>
                     <MenuItem eventKey={3.3} href="/employee">Add Employee</MenuItem>
+                    <MenuItem eventKey={3.4} href="/project">Add Project</MenuItem> 
                 </NavDropdown>
                 </Nav>
                 <Nav pullRight>

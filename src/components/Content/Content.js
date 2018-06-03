@@ -6,6 +6,7 @@ import Project from '../Project/Project';
 import Patient from '../Patient/Patient';
 import Employee from '../Employee/Employee';
 import Drug from '../Drug/Drug';
+import UnAuthorized from '../UnAuthorized/UnAuthorized';
 
 class Content extends Component {
   render() {
@@ -17,6 +18,8 @@ class Content extends Component {
           <Route exact path='/patient' component={Patient}/>
           <Route exact path='/drug' component={Drug}/>
           <Route exact path='/employee' component={Employee}/>
+          <Route exact path='/project' component={Project}/>
+          <Route exact path='/unauthorized' component={UnAuthorized}/>
         </Switch>
       </div>
     );
