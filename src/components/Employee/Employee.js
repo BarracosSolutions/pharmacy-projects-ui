@@ -68,15 +68,22 @@ class Employee extends Component {
         {alertMessage}
         <h2>Add New Employee</h2>
         <Form id="employeeForm" onSubmit={this.handleSubmit} horizontal>
-        <FormGroup>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              National ID
+            </Col>
+            <Col sm={8}>
+              <FormControl id="NationalId" name="NationalId" type="text" placeholder="National ID" />
+            </Col>
+          </FormGroup>
+          <FormGroup>
             <Col componentClass={ControlLabel} sm={2}>
               First Name
             </Col>
             <Col sm={8}>
-              <FormControl id="EmployeeFirtsNm" name="EmployeeFirtsNm" type="text" placeholder="First Name" />
+              <FormControl id="EmployeeFirstNm" name="EmployeeFirstNm" type="text" placeholder="First Name" />
             </Col>
           </FormGroup>
-
           <FormGroup>
             <Col componentClass={ControlLabel} sm={2}>
               Last Name
@@ -93,7 +100,6 @@ class Employee extends Component {
               <FormControl id="UserNm" name="UserNm" type="email" placeholder="Email" />
             </Col>
           </FormGroup>
-
           <FormGroup>
             <Col componentClass={ControlLabel} sm={2}>
               Password

@@ -70,12 +70,20 @@ class Patient extends Component {
         {alertMessage}
         <h2>Add New Patient</h2>
         <Form id="patientForm" onSubmit={this.handleSubmit} horizontal>
-        <FormGroup>
+          <FormGroup> 
+            <Col componentClass={ControlLabel} sm={2}>
+              National ID
+            </Col>
+            <Col sm={8}>
+              <FormControl id="NationalId" name="NationalId" type="text" placeholder="National ID" />
+            </Col>
+          </FormGroup>
+          <FormGroup>
             <Col componentClass={ControlLabel} sm={2}>
               First Name
             </Col>
             <Col sm={8}>
-              <FormControl id="PatientFirtsNm" name="PatientFirtsNm" type="text" placeholder="FirstNm" />
+              <FormControl id="PatientFirstNm" name="PatientFirstNm" type="text" placeholder="Patient First Name" />
             </Col>
           </FormGroup>
 
@@ -84,7 +92,7 @@ class Patient extends Component {
               Last Name
             </Col>
             <Col sm={8}>
-              <FormControl id="PatientLastNm" name="PatientLastNm" type="text" placeholder="LastNm" />
+              <FormControl id="PatientLastNm" name="PatientLastNm" type="text" placeholder="Patient Last Name" />
             </Col>
           </FormGroup>
           <FormGroup>
