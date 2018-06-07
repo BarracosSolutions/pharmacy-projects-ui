@@ -7,6 +7,8 @@ class Project extends Component {
     super(props);
     this.state = {
       drugs: [],
+      patients: [],
+      employees: [],
       isError: false,
       errorMessage: '',
       isPostSuccessful: false,
@@ -16,15 +18,22 @@ class Project extends Component {
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getDrugs = this.getDrugs.bind(this);
-    this.getPatients = this.getEmployees(this);
+    this.getEmployees = this.getEmployees.bind(this);
+    this.getPatients = this.getPatients.bind(this);
   }
 
   getPatients(){
-    const APIurl = localhost + "DBHandler.php/Drug/";
+    const APIurl = localhost + "DBHandler.php/Employee/";
+    fetch(APIurl).then(response => response.json())
+                 .then(json => this.setState({employees: json}))
+                 .catch(error => console.log(error));
   }
 
   getEmployees(){
-
+    const APIurl = localhost + "DBHandler.php/Patient/";
+    fetch(APIurl).then(response => response.json())
+                 .then(json => this.setState({patients: json}))
+                 .catch(error => console.log(error));
   }
 
   getDrugs(){
@@ -36,7 +45,8 @@ class Project extends Component {
 
   componentDidMount(){
     this.getDrugs()
-    console.log(this.state.drugs);
+    this.getEmployees()
+    this.getPatients()
   }
 
   
@@ -71,9 +81,19 @@ class Project extends Component {
   }
   render() {
     let selectDrugs = "";
-    
+    let selectEmployees = "";
+    let selectPatients = "";
+
     if(this.state.drugs.length > 0){
       selectDrugs = this.state.drugs.map((e) => <option key={e.DrugId} value={e.DrugId}> {e.DrugNm} </option>);
+    }
+
+    if(this.state.employees.length > 0){
+      selectEmployees = this.state.employees.map((e) => <option key={e.EmployeeId} value={e.EmployeeId}> {e.NationalId} - {e.EmployeeFirstNm} {e.EmployeeLastNm}</option>);
+    }
+
+    if(this.state.patients.length > 0){
+      selectPatients = this.state.patients.map((e) => <option key={e.PatientId} value={e.PatientId}> {e.NationalId} - {e.PatientFirstNm} {e.PatientLastNm}</option>);
     }
 
     var alertMessage = '';
@@ -101,11 +121,31 @@ class Project extends Component {
         <Form id="projectForm" onSubmit={this.handleSubmit} horizontal>
           <FormGroup controlId="formControlsSelect">
             <Col componentClass={ControlLabel} sm={2}>
+              <ControlLabel >Select a Project Manager</ControlLabel>
+            </Col>
+            <Col sm={8}>
+              <FormControl componentClass="select" placeholder="select">
+                {selectEmployees}
+              </FormControl>
+            </Col>
+          </FormGroup>
+          <FormGroup controlId="formControlsSelect">
+            <Col componentClass={ControlLabel} sm={2}>
               <ControlLabel >Select a Drug</ControlLabel>
             </Col>
             <Col sm={8}>
               <FormControl componentClass="select" placeholder="select">
                 {selectDrugs}
+              </FormControl>
+            </Col>
+          </FormGroup>
+          <FormGroup controlId="formControlsSelect">
+            <Col componentClass={ControlLabel} sm={2}>
+              <ControlLabel >Select a Patient</ControlLabel>
+            </Col>
+            <Col sm={8}>
+              <FormControl componentClass="select" placeholder="select">
+                {selectPatients}
               </FormControl>
             </Col>
           </FormGroup>
