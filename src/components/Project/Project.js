@@ -6,6 +6,7 @@ class Project extends Component {
   constructor(props){
     super(props);
     this.state = {
+      drugs: [],
       isError: false,
       errorMessage: '',
       isPostSuccessful: false,
@@ -14,7 +15,31 @@ class Project extends Component {
 
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getDrugs = this.getDrugs.bind(this);
+    this.getPatients = this.getEmployees(this);
   }
+
+  getPatients(){
+    const APIurl = localhost + "DBHandler.php/Drug/";
+  }
+
+  getEmployees(){
+
+  }
+
+  getDrugs(){
+    const APIurl = localhost + "DBHandler.php/Drug/";
+    fetch(APIurl).then(response => response.json())
+                 .then(json => this.setState({drugs: json}))
+                 .catch(error => console.log(error));
+  }
+
+  componentDidMount(){
+    this.getDrugs()
+    console.log(this.state.drugs);
+  }
+
+  
 
   handleDismiss() {
     this.setState({ show: false });
@@ -45,6 +70,12 @@ class Project extends Component {
     document.getElementById("projectForm").reset();
   }
   render() {
+    let selectDrugs = "";
+    
+    if(this.state.drugs.length > 0){
+      selectDrugs = this.state.drugs.map((e) => <option key={e.DrugId} value={e.DrugId}> {e.DrugNm} </option>);
+    }
+
     var alertMessage = '';
     if(this.state.isError){
       alertMessage = (<Alert bsStyle="danger" onDismiss={this.handleDismiss}>
@@ -63,12 +94,21 @@ class Project extends Component {
     if(!this.state.show){
       alertMessage = '';
     }
-
     return (
       <div>
         {alertMessage}
         <h2>Add New Project</h2>
         <Form id="projectForm" onSubmit={this.handleSubmit} horizontal>
+          <FormGroup controlId="formControlsSelect">
+            <Col componentClass={ControlLabel} sm={2}>
+              <ControlLabel >Select a Drug</ControlLabel>
+            </Col>
+            <Col sm={8}>
+              <FormControl componentClass="select" placeholder="select">
+                {selectDrugs}
+              </FormControl>
+            </Col>
+          </FormGroup>
           <FormGroup>
             <Col componentClass={ControlLabel} sm={2}>
               Funds
