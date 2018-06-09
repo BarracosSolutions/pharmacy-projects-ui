@@ -7,6 +7,13 @@ import Footer from './components/Footer/Footer';
 import Content from './components/Content/Content';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isUserAuthenticaded: false
+    };
+  }
+
   render() {
     return (
       <Router>
