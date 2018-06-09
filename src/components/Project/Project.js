@@ -60,13 +60,15 @@ class Project extends Component {
     const data = new FormData(event.target);
     const APIurl = localhost + "DBHandler.php/Project/";
     
-    var patient = {};
+    var project = {};
     
+    console.log(data);
+
     data.forEach(function(value, key){
-      patient[key] = value;
+      project[key] = value;
     });
 
-    var json = JSON.stringify(patient);
+    var json = JSON.stringify(project);
     console.log(json);
     fetch(APIurl, {
       method: 'POST',
@@ -124,7 +126,7 @@ class Project extends Component {
               <ControlLabel >Select a Project Manager</ControlLabel>
             </Col>
             <Col sm={8}>
-              <FormControl componentClass="select" placeholder="select">
+              <FormControl name="DirectorId" componentClass="select" placeholder="select">
                 {selectEmployees}
               </FormControl>
             </Col>
@@ -134,7 +136,7 @@ class Project extends Component {
               <ControlLabel >Select a Drug</ControlLabel>
             </Col>
             <Col sm={8}>
-              <FormControl componentClass="select" placeholder="select">
+              <FormControl name="DrugId" componentClass="select" placeholder="select">
                 {selectDrugs}
               </FormControl>
             </Col>
@@ -144,7 +146,7 @@ class Project extends Component {
               <ControlLabel >Select a Patient</ControlLabel>
             </Col>
             <Col sm={8}>
-              <FormControl componentClass="select" placeholder="select">
+              <FormControl name="PatientId" componentClass="select" placeholder="select">
                 {selectPatients}
               </FormControl>
             </Col>
@@ -154,7 +156,7 @@ class Project extends Component {
               Funds
             </Col>
             <Col sm={8}>
-              <FormControl id="Funds" name="Founds" type="text" placeholder="Funds" />
+              <FormControl id="Funds" name="Funds" type="text" placeholder="Funds" />
             </Col>
           </FormGroup>
           <FormGroup>
@@ -171,7 +173,7 @@ class Project extends Component {
           </FormGroup>
           <FormGroup>
             <Col smOffset={1} sm={3}>
-              <Button bsStyle="primary" type="submit">Add Patient</Button>
+              <Button bsStyle="primary" type="submit">Create Project</Button>
             </Col>
           </FormGroup>
         </Form>
