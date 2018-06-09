@@ -1,5 +1,13 @@
-.App {
+.App{
   text-align: center;
+}
+
+.title{
+  text-align: center;
+}
+
+.custom-table{
+  width: 90%;
 }
 
 .App-logo {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col,Table,Button } from 'react-bootstrap';
 import { localhost } from '../../connections/connections';
 
 class Projects extends Component {
@@ -38,22 +38,46 @@ class Projects extends Component {
   }
 
   getDirectorProjects(){
-    const APIurl = localhost + "DBHandler.php/Director_Projects/1";
+    const APIurl = localhost + "DBHandler.php/Director_Projects/" + this.state.user.EmployeeId;
     fetch(APIurl).then(response => response.json())
-                 .then(json => {console.log(json); this.setState({directorProjects: json})})
+                 .then(json => this.setState(prevState => ({directorProjects: [...prevState.directorProjects,json]})))
                  .catch(error => console.log(error));
   }
 
-
   render() {
+
+    let projects = "";
+    if(this.state.directorProjects.length > 0){
+      projects = this.state.directorProjects.map(e => 
+          <tr key={e.ProjectId}>
+            <td>{e.ProjectNm}</td>
+            <td>{e.Funds}</td>
+            <td>{e.Regime}</td>
+            <td>{e.ProjectStatusId}</td>
+            <td><Button bsStyle="primary">Edit</Button></td>
+          </tr>
+      )
+    }
+
     return (
       <div>
         <Row className="show-grid">
-          <Col md={6}>
-            <h2>Director Projects</h2>
-          </Col>
-          <Col md={6}>
-            <h2>Collaborator Projects</h2>
+          <Col md={12}>
+            <h2 class="title">Projects Management</h2>
+            <Table align="center" className="custom-table" striped bordered condensed hover>
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Funds</th>
+                  <th>Regime</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects}
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </div>
