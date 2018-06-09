@@ -121,6 +121,14 @@ class Project extends Component {
         {alertMessage}
         <h2>Add New Project</h2>
         <Form id="projectForm" onSubmit={this.handleSubmit} horizontal>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Project Name
+            </Col>
+            <Col sm={8}>
+              <FormControl id="ProjectNm" name="ProjectNm" type="text" placeholder="Project Name" />
+            </Col>
+          </FormGroup>
           <FormGroup controlId="formControlsSelect">
             <Col componentClass={ControlLabel} sm={2}>
               <ControlLabel >Select a Project Manager</ControlLabel>
