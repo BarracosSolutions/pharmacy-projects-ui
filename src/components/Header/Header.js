@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 class Header extends Component {
+  
   render() {
     return (
       <div>
@@ -25,7 +26,7 @@ class Header extends Component {
                 </NavDropdown>
                 </Nav>
                 <Nav pullRight>
-                    <NavItem eventKey={1} href="#">
+                    <NavItem eventKey={1} href="/login">
                         Log Out
                     </NavItem>
                 </Nav>

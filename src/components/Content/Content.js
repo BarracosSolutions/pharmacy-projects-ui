@@ -10,19 +10,6 @@ import LogIn from '../LogIn/LogIn';
 import UnAuthorized from '../UnAuthorized/UnAuthorized';
 
 class Content extends Component {
-
-  requireAuth(nextState, replace) {
-    if (!this.loggedIn()) {
-      replace({
-        pathname: '/login'
-      })
-    }
-  }
-
-  loggedIn() {
-    return true;
-  }
-
   render() {
     return (
       <div>

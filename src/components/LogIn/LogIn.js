@@ -40,17 +40,18 @@ class LogIn extends Component {
       body: json
     }).then(response => response.json())
       .then(post => this.isUserAuthenticated(post))
-      .then(isAuth => this.clearForm())
+      .then(isAuth => isAuth ? this.props.history.push({pathname:'/', state:{user:this.state.user, isUserAut: this.state.isUserAut}}) : "" )
+      .then( _ => this.clearForm())
       .catch(error => this.setState({isError: true,errorMessage: error.message, show:true}));
   }
 
   isUserAuthenticated(data){
     if(data === false){
-        this.setState({isAuth: false, show:true, errorMessage: "Username or password are wrong"});
+        this.setState({isUserAut: false, show:true, errorMessage: "Username or password are wrong"});
         return false;
     }
     else{
-        this.setState({isAuth:true, user: data});
+        this.setState({isUserAut:true, user: data});
         return true;
     }
   }

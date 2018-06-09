@@ -5,7 +5,20 @@ import { localhost } from '../../connections/connections';
 class Employee extends Component {
   constructor(props){
     super(props);
+    let isAuthenticated;
+    let user;
+    if(this.props.location.state === undefined || this.props.location.state.isUserAut === null){
+      isAuthenticated = false;
+      user = {};
+    }
+    else{
+      isAuthenticated = true;
+      user = this.props.location.state.user;
+    }
+
     this.state = {
+      user: user,
+      isUserAut: isAuthenticated,
       isError: false,
       errorMessage: '',
       isPostSuccessful: false,
@@ -14,6 +27,12 @@ class Employee extends Component {
 
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    if(!this.state.isUserAut){
+      this.props.history.push({pathname:'/unauthorized'});
+    }
   }
 
   handleDismiss() {

@@ -6,7 +6,20 @@ class Projects extends Component {
 
   constructor(props){
     super(props);
+    let isAuthenticated;
+    let user;
+    if(this.props.location.state === undefined || this.props.location.state.isUserAut === null){
+      isAuthenticated = false;
+      user = {};
+    }
+    else{
+      isAuthenticated = true;
+      user = this.props.location.state.user;
+    }
+
     this.state = {
+      user: user,
+      isUserAut: isAuthenticated,
       directorProjects: [],
       collaboratorProjects: []
     }
@@ -15,7 +28,13 @@ class Projects extends Component {
   }
 
   componentDidMount(){
-    this.getDirectorProjects();
+    if(this.state.isUserAut){
+      this.getDirectorProjects();
+    }
+    else{
+      this.props.history.push({pathname:'/unauthorized'});
+    }
+    
   }
 
   getDirectorProjects(){
