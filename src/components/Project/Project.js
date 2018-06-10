@@ -8,8 +8,9 @@ class Project extends Component {
 
     let isAuthenticated;
     let user;
+    console.log(this.props.location.state);
     if(this.props.location.state === undefined || this.props.location.state.isUserAut === null){
-      isAuthenticated = false;
+      isAuthenticated = true;
       user = {};
     }
     else{

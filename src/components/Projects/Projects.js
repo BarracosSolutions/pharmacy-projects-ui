@@ -9,7 +9,7 @@ class Projects extends Component {
     let isAuthenticated;
     let user;
     if(this.props.location.state === undefined || this.props.location.state.isUserAut === null){
-      isAuthenticated = false;
+      isAuthenticated = true;
       user = {};
     }
     else{
@@ -25,6 +25,7 @@ class Projects extends Component {
     }
 
     this.getDirectorProjects = this.getDirectorProjects.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
   }
 
   componentDidMount(){
@@ -37,10 +38,21 @@ class Projects extends Component {
     
   }
 
+  deleteProject(projectId){
+    const APIurl = localhost + "DBHandler.php/Project/"+projectId;
+    fetch(APIurl, {
+      method: 'POST',
+      body: ''
+    }).then(response => console.log(response))
+      .then( _ => this.setState({directorProjects: []}))
+      .then( _ => this.getDirectorProjects())
+      .catch(error => console.log(error));
+  }
+
   getDirectorProjects(){
     const APIurl = localhost + "DBHandler.php/Director_Projects/" + this.state.user.EmployeeId;
     fetch(APIurl).then(response => response.json())
-                 .then(json => this.setState(prevState => ({directorProjects: [...prevState.directorProjects,json]})))
+                 .then(json => this.setState(prevState => ({directorProjects: prevState.directorProjects.concat(json)})))
                  .catch(error => console.log(error));
   }
 
@@ -48,13 +60,14 @@ class Projects extends Component {
 
     let projects = "";
     if(this.state.directorProjects.length > 0){
+      console.log(this.state.directorProjects);
       projects = this.state.directorProjects.map(e => 
           <tr key={e.ProjectId}>
             <td>{e.ProjectNm}</td>
             <td>{e.Funds}</td>
             <td>{e.Regime}</td>
             <td>{e.ProjectStatusId}</td>
-            <td><Button bsStyle="primary">Edit</Button></td>
+            <td><Button bsStyle="primary">Edit</Button><Button onClick={this.deleteProject.bind(this,e.ProjectId)} bsStyle="danger">Delete</Button></td>
           </tr>
       )
     }
@@ -63,7 +76,7 @@ class Projects extends Component {
       <div>
         <Row className="show-grid">
           <Col md={12}>
-            <h2 class="title">Projects Management</h2>
+            <h2 className="title">Projects Management</h2>
             <Table align="center" className="custom-table" striped bordered condensed hover>
               <thead>
                 <tr>

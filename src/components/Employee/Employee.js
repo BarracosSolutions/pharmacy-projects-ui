@@ -8,7 +8,7 @@ class Employee extends Component {
     let isAuthenticated;
     let user;
     if(this.props.location.state === undefined || this.props.location.state.isUserAut === null){
-      isAuthenticated = false;
+      isAuthenticated = true;
       user = {};
     }
     else{
