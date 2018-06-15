@@ -102,7 +102,7 @@ class Drug extends Component {
           </FormGroup>
           <FormGroup>
             <Col smOffset={1} sm={3}>
-              <Button bsStyle="primary" type="submit">Add Patient</Button>
+              <Button bsStyle="primary" type="submit">Add Drug</Button>
             </Col>
           </FormGroup>
         </Form>

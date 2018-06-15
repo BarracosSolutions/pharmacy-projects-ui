@@ -4,7 +4,7 @@ import { Breadcrumb } from 'react-bootstrap';
 class Footer extends Component {
   render() {
     return (
-      <div>
+      <div className="footerDiv">
         <Breadcrumb>
           <Breadcrumb.Item href="#">Proyecto 2</Breadcrumb.Item>
           <Breadcrumb.Item href="#">Programación Web</Breadcrumb.Item>

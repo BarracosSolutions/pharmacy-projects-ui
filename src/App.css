@@ -34,3 +34,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.footerDiv{
+  position: absolute;
+
+  left: 30%;
+}

@@ -82,7 +82,7 @@ class LogIn extends Component {
     return (
       <div>
         {alertMessage}
-        <h2>Log In</h2>
+        <h2 className="title" >Log In</h2>
         <Form id="logInForm" onSubmit={this.handleSubmit} horizontal>
             <FormGroup>
                 <Col componentClass={ControlLabel} sm={2}>
