@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.2",
+    "google-charts": "^1.1.0",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
     "react-chartkick": "^0.2.0",
     "react-dom": "^16.4.0",
+    "react-google-charts": "^1.6.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
