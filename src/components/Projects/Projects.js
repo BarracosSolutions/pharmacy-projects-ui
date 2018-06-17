@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col,Table,Button,Modal, Form, FormControl,FormGroup, ControlLabel } from 'react-bootstrap';
 import { localhost } from '../../connections/connections';
-import Charts from '../Charts/Charts';
 
 class Projects extends Component {
 
@@ -138,9 +137,6 @@ class Projects extends Component {
             </Table>
           </Col>
         </Row>
-
-        <Charts/>
-
         <Modal bsSize="large" {...this.props} show={this.state.showModal} onHide={this.handleModalHide} dialogClassName="custom-modal">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-lg">

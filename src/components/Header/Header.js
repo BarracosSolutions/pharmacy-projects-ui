@@ -24,6 +24,9 @@ class Header extends Component {
                     <MenuItem eventKey={3.3} href="/employee">Add Employee</MenuItem>
                     <MenuItem eventKey={3.4} href="/project">Add Project</MenuItem> 
                 </NavDropdown>
+                <NavDropdown eventKey={4} title="Charts Section" id="basic-nav-dropdown">
+                    <MenuItem eventKey={4.1} href="/projects-status-chart">Projects Status</MenuItem>
+                </NavDropdown>
                 </Nav>
                 <Nav pullRight>
                     <NavItem eventKey={1} href="/login">

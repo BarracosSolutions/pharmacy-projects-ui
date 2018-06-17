@@ -8,6 +8,7 @@ import Employee from '../Employee/Employee';
 import Drug from '../Drug/Drug';
 import LogIn from '../LogIn/LogIn';
 import UnAuthorized from '../UnAuthorized/UnAuthorized';
+import ProjectsStatusChart from '../Charts/ProjectsStatusChart';
 
 class Content extends Component {
   render() {
@@ -20,6 +21,7 @@ class Content extends Component {
           <Route path='/drug' component={Drug} exact/>
           <Route path='/employee' component={Employee} exact/>
           <Route path='/project' component={Project} exact/>
+          <Route path='/projects-status-chart' component={ProjectsStatusChart} exact/>
           <Route exact path='/unauthorized' component={UnAuthorized}/>
           <Route exact path='/login' component={LogIn}/>
         </Switch>
