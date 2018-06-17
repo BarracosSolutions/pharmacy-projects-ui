@@ -38,7 +38,7 @@ class ProjectsBudgetChart extends Component {
       return (
         <div>
             <h2 className="title">Projects Budget Overview</h2>
-            <BarChart   prefix="$" data={this.state.data} xtitle="Budget" ytitle="Projects"/>
+            <BarChart   prefix="$" data={this.state.data} xtitle="Budget" ytitle="Projects" download="BarChartProjectsByBudget"/>
         </div>
       );
     }

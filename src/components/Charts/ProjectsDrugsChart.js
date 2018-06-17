@@ -38,7 +38,7 @@ class ProjectsDrugsChart extends Component {
       return (
         <div>
             <h2 className="title">Projects Drugs Overview</h2>
-            <ColumnChart data={this.state.data} xtitle="Drug" ytitle="Projects"/>
+            <ColumnChart data={this.state.data} xtitle="Drug" ytitle="Projects" download="ColumnChartProjectsByDrugs"/>
         </div>
       );
     }

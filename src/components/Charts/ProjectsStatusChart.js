@@ -21,7 +21,8 @@ class ProjectsStatusChart extends Component {
     }
 
     getProjects(){
-        const APIurl = localhost + "DBHandler.php/Project/";
+        const APIurl =  localhost + "DBHandler.php/Project/";
+        console.log(localhost);
         fetch(APIurl).then(response => response.json())
                      .then(json => this.parseResponse(json))
                      .catch(error => console.log(error));
@@ -52,7 +53,7 @@ class ProjectsStatusChart extends Component {
       return (
         <div>
           <h2 className="title">Project Status Overview</h2>
-          <PieChart data={this.state.data} donut={true} colors={["#D1DBBD", "#91AA9D",'#193441']}/>
+          <PieChart data={this.state.data} donut={true} colors={["#D1DBBD", "#91AA9D",'#193441']} download="PieChartProjectsByDrugs"/>
         </div>
       );
     }
