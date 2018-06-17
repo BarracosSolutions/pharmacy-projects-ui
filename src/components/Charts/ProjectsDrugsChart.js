@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { localhost } from '../../connections/connections';
-import ReactChartkick, { BarChart  } from 'react-chartkick'
+import ReactChartkick, { ColumnChart  } from 'react-chartkick'
 import Chart from 'chart.js'
 
 ReactChartkick.addAdapter(Chart)
 
-class ProjectsBudgetChart extends Component {
+class ProjectsDrugsChart extends Component {
     constructor(props){
       super(props);
   
@@ -17,19 +17,19 @@ class ProjectsBudgetChart extends Component {
   
     componentDidMount(){
         this.setState({data:[]});
-        this.getProjects();
+        this.getDrugsData();
     }
 
-    getProjects(){
-        const APIurl = localhost + "DBHandler.php/Project/";
+    getDrugsData(){
+        const APIurl = localhost + "DBHandler.php/Project_Drugs/";
         fetch(APIurl).then(response => response.json())
-                     .then(json => this.parseResponse(json))
+                     .then( json => this.parseResponse(json))
                      .catch(error => console.log(error));
     }
 
     parseResponse(jsonData){
         jsonData.forEach((element)=>{
-            this.setState({data: [...this.state.data,[element.ProjectNm,element.Funds]]});
+            this.setState({data: [...this.state.data,[element.DrugNm,element['Count(Drug.DrugId)']]]});
         });
     }
 
@@ -37,11 +37,11 @@ class ProjectsBudgetChart extends Component {
     render() {
       return (
         <div>
-            <h2 className="title">Projects Budget Overview</h2>
-            <BarChart   prefix="$" data={this.state.data} xtitle="Budget" ytitle="Projects"/>
+            <h2 className="title">Projects Drugs Overview</h2>
+            <ColumnChart data={this.state.data} xtitle="Drug" ytitle="Projects"/>
         </div>
       );
     }
   }
   
-  export default ProjectsBudgetChart;
+  export default ProjectsDrugsChart;

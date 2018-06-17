@@ -10,6 +10,7 @@ import LogIn from '../LogIn/LogIn';
 import UnAuthorized from '../UnAuthorized/UnAuthorized';
 import ProjectsStatusChart from '../Charts/ProjectsStatusChart';
 import ProjectsBudgetChart from '../Charts/ProjectsBudgetChart';
+import ProjectsDrugsChart from '../Charts/ProjectsDrugsChart';
 
 class Content extends Component {
   render() {
@@ -24,6 +25,7 @@ class Content extends Component {
           <Route path='/project' component={Project} exact/>
           <Route path='/projects-status-chart' component={ProjectsStatusChart} exact/>
           <Route path='/projects-budget-chart' component={ProjectsBudgetChart} exact/>
+          <Route path='/projects-drugs-chart' component={ProjectsDrugsChart} exact/>
           <Route exact path='/unauthorized' component={UnAuthorized}/>
           <Route exact path='/login' component={LogIn}/>
         </Switch>
